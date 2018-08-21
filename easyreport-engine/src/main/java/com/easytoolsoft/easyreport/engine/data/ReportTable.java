@@ -2,6 +2,8 @@ package com.easytoolsoft.easyreport.engine.data;
 
 /**
  * 报表类
+ *
+ * @author tomdeng
  */
 public class ReportTable {
     private final String htmlText;
@@ -9,7 +11,8 @@ public class ReportTable {
     private final int metaDataRowCount;
     private final int metaDataColumnCount;
 
-    public ReportTable(String htmlText, String sqlText, int metaDataRowCount, int metaDataColumnCount) {
+    public ReportTable(final String htmlText, final String sqlText, final int metaDataRowCount,
+                       final int metaDataColumnCount) {
         this.htmlText = htmlText;
         this.sqlText = sqlText;
         this.metaDataRowCount = metaDataRowCount;
@@ -17,11 +20,11 @@ public class ReportTable {
     }
 
     public String getHtmlText() {
-        return htmlText;
+        return this.htmlText;
     }
 
     public String getSqlText() {
-        return sqlText;
+        return this.sqlText;
     }
 
     public long getMetaDataRowCount() {
@@ -29,6 +32,6 @@ public class ReportTable {
     }
 
     public int getMetaDataColumnCount() {
-        return metaDataColumnCount;
+        return this.metaDataColumnCount;
     }
 }

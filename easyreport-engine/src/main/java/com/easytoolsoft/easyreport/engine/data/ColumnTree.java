@@ -7,6 +7,8 @@ import java.util.Map;
 
 /**
  * 报表列树型结构类
+ *
+ * @author tomdeng
  */
 public class ColumnTree {
     private final List<ColumnTreeNode> roots;
@@ -14,7 +16,7 @@ public class ColumnTree {
     private List<ColumnTreeNode> leafNodes;
     private Map<Integer, List<ColumnTreeNode>> levelNodesMap;
 
-    public ColumnTree(List<ColumnTreeNode> roots, int depth) {
+    public ColumnTree(final List<ColumnTreeNode> roots, final int depth) {
         this.roots = roots;
         this.depth = depth;
     }
@@ -31,7 +33,7 @@ public class ColumnTree {
         return this.leafNodes;
     }
 
-    public void setLeafNodes(List<ColumnTreeNode> leafNodes) {
+    public void setLeafNodes(final List<ColumnTreeNode> leafNodes) {
         this.leafNodes = leafNodes;
     }
 
@@ -47,19 +49,20 @@ public class ColumnTree {
         return this.getNodesByLevel(this.getDepth() - 1);
     }
 
-    public List<ColumnTreeNode> getNodesByLevel(int level) {
-        if (this.levelNodesMap == null)
+    public List<ColumnTreeNode> getNodesByLevel(final int level) {
+        if (this.levelNodesMap == null) {
             this.getLevelNodesMap();
+        }
         if (this.levelNodesMap.containsKey(level)) {
             return this.levelNodesMap.get(level);
         }
         return new ArrayList<>(0);
     }
 
-    private void buildLevelNodesMapByRecursion(ColumnTreeNode parentNode) {
-        int level = parentNode.getDepth();
+    private void buildLevelNodesMapByRecursion(final ColumnTreeNode parentNode) {
+        final int level = parentNode.getDepth();
         if (!this.levelNodesMap.containsKey(level)) {
-            List<ColumnTreeNode> treeNodes = new ArrayList<>();
+            final List<ColumnTreeNode> treeNodes = new ArrayList<>();
             treeNodes.add(parentNode);
             this.levelNodesMap.put(level, treeNodes);
         } else {
